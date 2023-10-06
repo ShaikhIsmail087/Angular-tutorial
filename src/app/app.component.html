@@ -1,0 +1,156 @@
+<h1>Angular Directive</h1>
+<h1 appRedEl>Angular Directive</h1>
+<p>Hello How are you</p>
+<p appRedEl>Code step by step</p>
+<h1>Angular Template driven form</h1>
+<!-- <form #loginForm="ngForm" (ngSubmit)="userLogin(loginForm.controls)">
+  <input type="text" name="name" placeholder="Enter Name" ngModel>
+  <br><br>
+  <input type="password" name="password" placeholder="Enter password" ngModel>
+  <br><br>
+  <button>Login</button>
+</form> -->
+
+<h1>Angular Reactive form</h1>
+
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+  <input type="text" name="name" placeholder="Enter Name" formControlName="user">
+  <br><span style="color: red;" *ngIf="user && user.invalid && user.touched">This field is not valid</span>
+  <br>
+  <input type="password" name="password" placeholder="Enter password" formControlName="password">
+  <br><span style="color: red;" *ngIf="password && password.invalid && password.touched">This field is not valid</span>
+  <br>
+  <button [disabled]="loginForm.invalid">Login</button>
+</form>
+
+
+<h1>{{title}}</h1>
+<h1>{{title | uppercase}}</h1>
+<h1>{{title | lowercase}}</h1>
+<h1>{{today | date :'fullDate'}}</h1>
+<app-header></app-header>
+<app-child [item]="data1"></app-child>
+<h1>{{data}}</h1>
+<app-child (updatedataEvent)="updateData($event)"></app-child>
+<ul *ngFor="let user of userDetails">
+  <app-user-details [item1]='user'></app-user-details>
+</ul>
+<h1>Two way binding</h1>
+<input type="text" [(ngModel)]="name1">
+<h3>{{name1}}</h3>
+
+<h1>Template ref var</h1>
+<input type="text" #box name="user" placeholder="Enter user name"/>
+<button (click)="getVal(box.placeholder)">Call Function</button>
+
+<button (click)="updateChild()">Update child Component</button>
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+
+<div class="example-label">Raised</div>
+  <div class="example-button-row">
+    <button mat-raised-button>Basic</button>
+    <button mat-raised-button color="primary">Primary</button>
+    <button mat-raised-button color="accent">Accent</button>
+    <button mat-raised-button color="warn">Warn</button>
+    <button mat-raised-button disabled>Disabled</button>
+    <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
+  </div>
+
+  <div class="demo-section">
+    Button with a badge on the left
+    <button mat-raised-button color="primary"
+        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+      Action
+    </button>
+  </div>
+
+  <h1>Add Task</h1>
+  <input type="text" placeholder="Enter New Task" #task>
+  <br /><br />
+  <button (click)="addTask(task.value)">Add Task</button>
+
+  <ul *ngFor="let item of list">
+    <li>
+        {{item.name}} <button (click)="removeTask(item.id)">Remove</button>
+    </li>
+  </ul>
+
+<h1>{{title}}</h1>
+<form #basicForm="ngForm" (ngSubmit)="getData(basicForm.value)">
+    <input type="text" ngModel name="user" placeholder="Enter User Name" />
+    <br /><br />
+    <input type="text" ngModel name="email" placeholder="Enter User Email" />
+    <br /><br />
+    <input type="password" ngModel name="password" placeholder="Enter User Password" />
+    <br /><br />
+    <button>Register</button>
+</form>
+<ul>
+    <li>{{userData.user}}</li>
+    <li>{{userData.email}}</li>
+    <li>{{userData.password}}</li>
+</ul>
+
+<h1>Toggle</h1>
+<button (click)="toggle()">Toggle</button>
+<div *ngIf="isDisplay">
+    Heading Tag
+    <h1>Hello</h1>
+    <h1>Hello</h1>
+    <h1>Hello</h1>
+    <h1>Hello</h1>
+
+</div>
+
+<h1 class="header">Hello Angular {{title}}</h1>
+
+<h1>click button:-</h1>
+<button (click)="getName('Ismail Shaikh')">Click</button>
+<br>
+<!-- <button (click)="getData('he')">call function</button>
+<br>
+<input type="text" #box (keyup)="getData('box.value')" placeholder="event keyup">
+<br>
+<input type="text" #box1 (keydown)="getData('box1.value')" placeholder="event keydown">
+<br>
+<input type="text" #box2 (blur)="getData('box2.value')" placeholder="event blur">
+<br>
+<input type="text" #box3 (input)="getData('box3.value')" placeholder="event input"> -->
+<br>
+<h1>click button:-</h1>
+<button (click)="counter('minus')">--</button>
+<br>
+<p>count : {{count}}</p>
+<button (click)="counter('plus')">++</button>
+<br>
+<h1>Interpolation and property binding:-</h1>
+<input type="text" name="user-name" value="{{name}}">
+<br>
+<input type="text" name="user-name" [value]="name">
+<h1>if else block:-</h1>
+<h2 *ngIf="show; then ifBlock else elseBlock">Code step by step</h2>
+<ng-template #ifBlock>
+    <h2>Else condition</h2>
+</ng-template>
+<ng-template #elseBlock>
+    <h2>Else block</h2>
+</ng-template>
+<h1>switch block:-</h1>
+<div [ngSwitch]="color">
+
+    <h1 *ngSwitchCase="'red'" style="color:red">Red Color</h1>
+    <h1 *ngSwitchCase="'green'" style="color:green">Green Color</h1>
+    <h1 *ngSwitchCase="'blue'" style="color:blue">Blue Color</h1>
+
+</div>
+<h1>for loop:-</h1>
+<h2 *ngFor="let item of users">Name is: {{item}}</h2>
+<h1 [style.color]="color" [style.backgroundColor]="bgColor">{{title}}</h1>
+<button (click)="updateColor()">Update Color</button>
+<app-user-list></app-user-list>
+<app-student-list></app-student-list>
+<app-login></app-login>
+<app-user-register></app-user-register>
+<app-country-list></app-country-list>
+<app-sign-up></app-sign-up>
+<app-sign-in></app-sign-in>
